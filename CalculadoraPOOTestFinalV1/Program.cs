@@ -1,5 +1,4 @@
 ﻿using System.IO;
-
 namespace CalculadoraPOOTestFinalV1;
 
 class Program
@@ -20,6 +19,7 @@ class Program
             Console.WriteLine("║ 2. Resta                         ║");
             Console.WriteLine("║ 3. División                      ║");
             Console.WriteLine("║ 4. Raíz Cuadrada                 ║");
+            Console.WriteLine("║ 5. Multiplicación                ║");
             Console.WriteLine("║ 0. Salir                         ║");
             Console.WriteLine("╚══════════════════════════════════╝");
             Console.WriteLine();
@@ -43,6 +43,10 @@ class Program
                 case "4": // Raíz Cuadrada
                     Console.Clear();
                     RaizCuadrada.MetodoRaizCuadrada();
+                    break;
+                case "5": // Multiplicación
+                    Console.Clear();
+                    Multiplicacion.MetodoMultiplicar();
                     break;
                 case "0":
                     return; // Salir de la aplicación

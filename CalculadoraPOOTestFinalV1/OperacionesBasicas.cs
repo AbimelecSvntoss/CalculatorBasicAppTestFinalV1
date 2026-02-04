@@ -1,6 +1,7 @@
 ﻿using CalculadoraPOOTestFinalV1;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -12,7 +13,6 @@ public class Suma : Operacion
     public override double Calcular(double n1, double n2) => n1 + n2;
     public static void MetodoSumar()
     {
-
         Console.ForegroundColor = ConsoleColor.DarkMagenta;
         Console.Title = "Menú de Suma";
 
@@ -156,5 +156,47 @@ public class RaizCuadrada : Operacion
         Console.WriteLine();
         Console.WriteLine("Presione una tecla para continuar...");
         Console.ReadKey();
+    }
+}
+public class Multiplicacion : Operacion
+{
+    public Multiplicacion() => Nombre = "Multiplicación";
+    public override double Calcular(double n1, double n2) => n1 * n2;
+
+    public static void MetodoMultiplicacion()
+    {
+        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+        Console.Title = "Menú de Multiplicación";
+
+        Console.Clear();
+
+        Console.WriteLine("< Menú de Multiplicación >");
+        Console.WriteLine();
+        Console.Write("Ingrese el primer número: ");
+        string input1 = Console.ReadLine();
+
+        Console.Write("Ingrese el segundo número: ");
+        string input2 = Console.ReadLine();
+
+        if (!double.TryParse(input1, out double n1) || !double.TryParse(input2, out double n2))
+        {
+            Console.WriteLine("Entrada no válida. Introduzca números válidos.");
+            Console.ReadKey();
+            return;
+        }
+
+        var oper = new Multiplicacion();
+        double resultado = oper.Calcular(n1, n2);
+        Console.WriteLine();
+        Console.WriteLine($"El resultado de la multiplicación es: {resultado}");
+        Console.WriteLine();
+        Console.WriteLine("Presione una tecla para continuar...");
+        Console.ReadKey();
+    }
+
+    internal static void MetodoMultiplicar()
+    {
+        // Wrapper para mantener compatibilidad con el Main que llama a MetodoMultiplicar()
+        MetodoMultiplicacion();
     }
 }
