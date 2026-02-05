@@ -196,7 +196,37 @@ public class Multiplicacion : Operacion
 
     internal static void MetodoMultiplicar()
     {
-        // Wrapper para mantener compatibilidad con el Main que llama a MetodoMultiplicar()
         MetodoMultiplicacion();
+    }
+}
+
+public class Potencia : Operacion
+{
+    public Potencia() => Nombre = "Potencia";
+    public override double Calcular(double n1, double n2) => Math.Pow(n1, n2);
+    public static void MetodoPotencia()
+    {
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.Title = "Menú de Potencia";
+        Console.Clear();
+        Console.WriteLine("< Menú de Potencia >");
+        Console.WriteLine();
+        Console.Write("Ingrese la base: ");
+        string input1 = Console.ReadLine();
+        Console.Write("Ingrese el exponente: ");
+        string input2 = Console.ReadLine();
+        if (!double.TryParse(input1, out double n1) || !double.TryParse(input2, out double n2))
+        {
+            Console.WriteLine("Entrada no válida. Introduzca números válidos.");
+            Console.ReadKey();
+            return;
+        }
+        var oper = new Potencia();
+        double resultado = oper.Calcular(n1, n2);
+        Console.WriteLine();
+        Console.WriteLine($"El resultado de la potencia es: {resultado}");
+        Console.WriteLine();
+        Console.WriteLine("Presione una tecla para continuar...");
+        Console.ReadKey();
     }
 }
